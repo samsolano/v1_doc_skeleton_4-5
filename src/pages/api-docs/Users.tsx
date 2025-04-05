@@ -1,63 +1,85 @@
 ```jsx
-function Users() {
+import React from 'react';
+
+const Users = () => {
   return (
-    <div style={{ fontFamily: 'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"', lineHeight: '1.5', color: '#0f172a' }}>
-      <div style={{ padding: '2rem' }}>
-        <div style={{ marginBottom: '1.5rem' }}>
-          <h2 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>
-            <span style={{ color: '#7c3aed' }}>GET</span> /users
-          </h2>
-          <p style={{ color: '#4b5563' }}>Returns a list of all users.</p>
-        </div>
+    <div className="container mx-auto max-w-3xl mt-10 p-4 dark:bg-gray-900 dark:text-white">
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold tracking-tight mb-2">Users</h1>
+        <p className="text-gray-500 dark:text-gray-400">
+          Retrieve a list of users.
+        </p>
+      </div>
 
-        <div style={{ marginBottom: '1rem' }}>
-          <h3 style={{ fontSize: '1.25rem', fontWeight: 'semibold', marginBottom: '0.5rem' }}>Endpoint</h3>
-          <p style={{ backgroundColor: '#f3f4f6', padding: '0.5rem 0.75rem', borderRadius: '0.375rem', fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace', fontSize: '0.875rem' }}>
-            /users
-          </p>
-        </div>
+      <div className="mb-4">
+        <h2 className="text-2xl font-bold tracking-tight mb-2">
+          GET <span className="text-blue-500 dark:text-blue-400">/users</span>
+        </h2>
+        <p className="text-gray-700 dark:text-gray-300 mb-4">
+          Returns a list of all users.
+        </p>
 
-        <div style={{ marginBottom: '1rem' }}>
-          <h3 style={{ fontSize: '1.25rem', fontWeight: 'semibold', marginBottom: '0.5rem' }}>Method</h3>
-          <p style={{ display: 'inline-block', padding: '0.25rem 0.5rem', borderRadius: '0.375rem', backgroundColor: '#e0e7ff', color: '#3730a3', fontWeight: 'semibold', fontSize: '0.875rem' }}>
-            GET
-          </p>
-        </div>
-
-        <div>
-          <h3 style={{ fontSize: '1.25rem', fontWeight: 'semibold', marginBottom: '0.5rem' }}>Response</h3>
-          <div style={{ backgroundColor: '#f9fafb', borderRadius: '0.375rem', border: '1px solid #e5e7eb', padding: '1rem' }}>
-            <div style={{ marginBottom: '0.75rem' }}>
-              <h4 style={{ fontWeight: 'semibold', marginBottom: '0.25rem' }}>Status Code</h4>
-              <p style={{ color: '#374151', fontSize: '0.875rem' }}>
-                <span style={{ fontWeight: 'bold' }}>200 OK</span>
+        <div className="border rounded-md bg-gray-100 dark:bg-gray-800 border-gray-200 dark:border-gray-700">
+          <div className="p-4">
+            <div className="font-bold text-lg mb-2">Endpoint</div>
+            <div className="bg-gray-200 dark:bg-gray-700 rounded-md p-2 font-mono text-sm">
+              <span className="text-green-500">GET</span> <span className="text-blue-500">/users</span>
+            </div>
+          </div>
+          <div className="p-4 border-t border-gray-200 dark:border-gray-700">
+            <div className="font-bold text-lg mb-2">Request</div>
+            <div className="mb-2">
+              <p className="text-gray-700 dark:text-gray-300">
+                No request body is needed for this endpoint.
               </p>
             </div>
-            <div>
-              <h4 style={{ fontWeight: 'semibold', marginBottom: '0.25rem' }}>Response Body</h4>
-              <pre style={{ backgroundColor: '#f3f4f6', padding: '0.75rem', borderRadius: '0.375rem', overflowX: 'auto', fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace', fontSize: '0.875rem', color: '#1e293b' }}>
-                <code >
-                  {`{
-  "users": [
-    {
-      "id": 1,
-      "name": "John Doe"
-    },
-    {
-      "id": 2,
-      "name": "Jane Smith"
-    }
-  ]
-}`}
-                </code>
-              </pre>
+             <div className="font-bold text-sm mb-1">Example Request</div>
+            <div className="bg-gray-200 dark:bg-gray-700 rounded-md p-2 font-mono text-sm">
+              <pre><code>
+                <span className="text-white">// Using JavaScript fetch API</span><br/>
+                <span className="text-yellow-500">fetch</span><span className="text-white">(</span><span className="text-green-500">'/users'</span><span className="text-white">)</span><br/>
+                <span className="text-white">  .</span><span className="text-yellow-500">then</span><span className="text-white">(</span><span className="text-gray-300">response</span> <span className="text-white">=&gt;</span> <span className="text-gray-300">response</span><span className="text-white">.</span><span className="text-yellow-500">json</span><span className="text-white">())</span><br/>
+                <span className="text-white">  .</span><span className="text-yellow-500">then</span><span className="text-white">(</span><span className="text-gray-300">data</span> <span className="text-white">=&gt;</span> <span className="text-white">{</span><br/>
+                <span className="text-white">    </span><span className="text-yellow-500">console</span><span className="text-white">.</span><span className="text-yellow-500">log</span><span className="text-white">(</span><span className="text-gray-300">data</span><span className="text-white">);</span> <span className="text-white">// Process the user data</span><br/>
+                <span className="text-white">  </span><span className="text-white">});</span>
+              </code></pre>
+            </div>
+          </div>
+          <div className="p-4 border-t border-gray-200 dark:border-gray-700">
+            <div className="font-bold text-lg mb-2">Response</div>
+            <p className="text-gray-700 dark:text-gray-300 mb-2">
+              The API returns a JSON response with a list of users.
+            </p>
+            <div className="font-bold text-sm mb-1">Response Body</div>
+            <div className="bg-gray-200 dark:bg-gray-700 rounded-md p-2 font-mono text-sm">
+              <pre><code>
+                <span className="text-white">{</span><br/>
+                <span className="text-white">  </span><span className="text-purple-500">"users"</span><span className="text-white">: [</span><br/>
+                <span className="text-white">    </span><span className="text-white">{</span><br/>
+                <span className="text-white">      </span><span className="text-purple-500">"id"</span><span className="text-white">: </span><span className="text-blue-500">1</span><span className="text-white">,</span><br/>
+                <span className="text-white">      </span><span className="text-purple-500">"name"</span><span className="text-white">: </span><span className="text-green-500">"John Doe"</span><br/>
+                <span className="text-white">    </span><span className="text-white">},</span><br/>
+                <span className="text-white">    </span><span className="text-white">{</span><br/>
+                <span className="text-white">      </span><span className="text-purple-500">"id"</span><span className="text-white">: </span><span className="text-blue-500">2</span><span className="text-white">,</span><br/>
+                <span className="text-white">      </span><span className="text-purple-500">"name"</span><span className="text-white">: </span><span className="text-green-500">"Jane Smith"</span><br/>
+                <span className="text-white">    </span><span className="text-white">},</span><br/>
+                <span className="text-white">    </span><span className="text-gray-500">... more users</span><br/>
+                <span className="text-white">  ]</span><br/>
+                <span className="text-white">}</span>
+              </code></pre>
+            </div>
+            <div className="mt-4">
+              <div className="font-bold text-sm mb-1">Response Status Codes</div>
+              <ul className="list-disc list-inside text-gray-700 dark:text-gray-300">
+                <li><span className="font-bold">200 OK</span>: Successful retrieval of users.</li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Users;
 ```
