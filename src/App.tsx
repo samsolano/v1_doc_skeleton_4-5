@@ -31,6 +31,8 @@ import APIMarketplace from "./pages/APIMarketplace";
 import APIDocumentation from "./pages/APIDocumentation";
 import APIDeepsearch from "./pages/APIDeepsearch";
 
+import Endpoint1 from "./pages/api-docs/Endpoint1";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -41,6 +43,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout><Index /></Layout>} />
+          <Route path="/api-docs/endpoint1"  />
           <Route path="/documentation" element={<Layout><Documentation /></Layout>} />
           <Route path="/features" element={<Layout><Features /></Layout>} />
           <Route path="/download" element={<Layout><Download /></Layout>} />
