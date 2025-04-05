@@ -1,3 +1,4 @@
+import Summary from "./pages/api-docs/Summary";
 import Recharge from "./pages/api-docs/Recharge";
 import Purchase from "./pages/api-docs/Purchase";
 import Transactions from "./pages/api-docs/Transactions";
@@ -87,6 +88,7 @@ const App = () => (
      <Route path="/api-docs/transactions" element={<Transactions />} />
      <Route path="/api-docs/purchase" element={<Purchase />} />
      <Route path="/api-docs/recharge" element={<Recharge />} />
+     <Route path="/api-docs/summary" element={<Summary />} />
 </Routes>
       </BrowserRouter>
     </TooltipProvider>
