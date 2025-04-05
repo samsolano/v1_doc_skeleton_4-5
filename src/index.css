@@ -1,0 +1,227 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Prevent scrollbar from changing layout */
+html {
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(128, 128, 128, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(128, 128, 128, 0.5);
+}
+
+/* Ensure consistent layout across browsers */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import 'swagger-ui-react/swagger-ui.css';
+@import 'swagger-ui-themes/themes/3.x/theme-material.css';
+
+@layer base {
+  :root {
+    --background: 0 0% 7%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 4.5%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 4.5%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 175 86% 47%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 13%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 16%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 0 0% 10%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 16.5%;
+    --input: 0 0% 16.5%;
+    --ring: 175 86% 47%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 7%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 175 86% 47%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 10%;
+    --sidebar-accent-foreground: 0 0% 90%;
+    --sidebar-border: 0 0% 16.5%;
+    --sidebar-ring: 175 86% 47%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-devscribe-dark-gray text-foreground antialiased scroll-smooth;
+  }
+
+  ::selection {
+    @apply bg-devscribe-teal/30 text-white;
+  }
+}
+
+@layer components {
+  .sidebar-link {
+    @apply flex items-center gap-3 px-4 py-2 rounded-md text-[15px] text-devscribe-text-secondary hover:text-white hover:bg-devscribe-hover-bg transition-all duration-150 ease-in-out;
+  }
+
+  .sidebar-link.active {
+    @apply bg-devscribe-hover-bg text-white;
+  }
+
+  .sidebar-section {
+    @apply py-2 border-t border-devscribe-border mt-2;
+  }
+
+  .sidebar-heading {
+    @apply text-xs uppercase tracking-wide text-devscribe-text-secondary font-semibold px-4 py-2;
+  }
+
+  .feature-card {
+    @apply bg-devscribe-card-bg border border-devscribe-border rounded-xl p-6 hover:border-devscribe-teal/50 transition-all duration-200 relative overflow-hidden;
+  }
+
+  .feature-card:hover .arrow-icon {
+    @apply translate-x-1 opacity-100;
+  }
+
+  .arrow-icon {
+    @apply absolute top-6 right-6 opacity-70 transition-all duration-200;
+  }
+
+  .alert-box {
+    @apply bg-devscribe-hover-bg border border-devscribe-border rounded-xl p-6 flex gap-4 items-start;
+  }
+
+  /* Swagger UI Dark Theme Customization */
+  .swagger-ui-container .swagger-ui {
+    @apply text-white rounded-xl overflow-hidden;
+  }
+
+  .swagger-ui-container .swagger-ui .opblock {
+    @apply border-devscribe-border rounded-lg mb-4 shadow-sm;
+  }
+
+  .swagger-ui-container .swagger-ui .opblock-summary {
+    @apply bg-devscribe-card-bg border-b border-devscribe-border rounded-t-lg;
+  }
+
+  .swagger-ui-container .swagger-ui .opblock-summary-get {
+    @apply bg-blue-900/20 text-blue-400;
+  }
+
+  .swagger-ui-container .swagger-ui .opblock-summary-post {
+    @apply bg-green-900/20 text-green-400;
+  }
+
+  .swagger-ui-container .swagger-ui .opblock-summary-put {
+    @apply bg-yellow-900/20 text-yellow-400;
+  }
+
+  .swagger-ui-container .swagger-ui .opblock-summary-delete {
+    @apply bg-red-900/20 text-red-400;
+  }
+
+  .swagger-ui-container .swagger-ui .opblock-description-wrapper {
+    @apply bg-devscribe-dark-gray;
+  }
+
+  .swagger-ui-container .swagger-ui .opblock.opblock-get .opblock-summary-method {
+    @apply bg-blue-500;
+  }
+
+  .swagger-ui-container .swagger-ui .opblock.opblock-post .opblock-summary-method {
+    @apply bg-green-500;
+  }
+
+  .swagger-ui-container .swagger-ui .opblock.opblock-put .opblock-summary-method {
+    @apply bg-yellow-500;
+  }
+
+  .swagger-ui-container .swagger-ui .opblock.opblock-delete .opblock-summary-method {
+    @apply bg-red-500;
+  }
+
+  .swagger-ui-container .swagger-ui .btn {
+    @apply bg-devscribe-teal text-white border-0 hover:bg-devscribe-teal/90;
+  }
+
+  .swagger-ui-container .swagger-ui select {
+    @apply bg-devscribe-dark-gray border border-devscribe-border text-white;
+  }
+
+  .swagger-ui-container .swagger-ui input[type=text] {
+    @apply bg-devscribe-dark-gray border border-devscribe-border text-white;
+  }
+
+  .swagger-ui-container .swagger-ui textarea {
+    @apply bg-devscribe-dark-gray border border-devscribe-border text-white;
+  }
+
+  .swagger-ui-container .swagger-ui .parameter__name {
+    @apply text-white;
+  }
+
+  .swagger-ui-container .swagger-ui .parameter__in {
+    @apply text-devscribe-text-secondary;
+  }
+
+  .swagger-ui-container .swagger-ui .response-col_status {
+    @apply text-white;
+  }
+
+  .swagger-ui-container .swagger-ui .response-col_description {
+    @apply text-devscribe-text-secondary;
+  }
+
+  .swagger-ui-container .swagger-ui .tab {
+    @apply text-white;
+  }
+
+  .swagger-ui-container .swagger-ui .model-box {
+    @apply bg-devscribe-card-bg border border-devscribe-border;
+  }
+
+  .swagger-ui-container .swagger-ui section.models {
+    @apply border border-devscribe-border bg-devscribe-card-bg;
+  }
+
+  .swagger-ui-container .swagger-ui section.models h4 {
+    @apply text-white;
+  }
+}
