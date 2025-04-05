@@ -1,227 +1,230 @@
 ```jsx
+import React from 'react';
+
 const Purchase = () => {
+  const styles = {
+    container: {
+      fontFamily: 'sans-serif',
+      maxWidth: '800px',
+      margin: '20px auto',
+      padding: '20px',
+      backgroundColor: '#f8f8f8',
+      borderRadius: '8px',
+      border: '1px solid #e0e0e0',
+    },
+    heading: {
+      fontSize: '2rem',
+      fontWeight: 'bold',
+      marginBottom: '15px',
+      color: '#333',
+    },
+    endpoint: {
+      fontSize: '1.5rem',
+      marginBottom: '10px',
+      color: '#555',
+      display: 'flex',
+      alignItems: 'center',
+      gap: '10px',
+    },
+    methodBadge: {
+      backgroundColor: '#22c55e',
+      color: 'white',
+      padding: '5px 10px',
+      borderRadius: '6px',
+      fontSize: '0.9rem',
+      fontWeight: 'bold',
+    },
+    description: {
+      fontSize: '1rem',
+      color: '#666',
+      marginBottom: '20px',
+      lineHeight: '1.6',
+    },
+    table: {
+      width: '100%',
+      borderCollapse: 'collapse',
+      marginBottom: '20px',
+    },
+    th: {
+      backgroundColor: '#f0f0f0',
+      border: '1px solid #e0e0e0',
+      padding: '10px',
+      textAlign: 'left',
+      fontWeight: 'bold',
+    },
+    td: {
+      border: '1px solid #e0e0e0',
+      padding: '10px',
+    },
+    codeBlock: {
+      backgroundColor: '#f0f0f0',
+      padding: '15px',
+      borderRadius: '6px',
+      overflowX: 'auto',
+      fontSize: '0.9rem',
+      marginBottom: '20px',
+      fontFamily: 'monospace',
+      border: '1px solid #e0e0e0',
+    },
+    responseSection: {
+      marginBottom: '20px',
+    },
+    responseHeading: {
+      fontSize: '1.2rem',
+      fontWeight: 'bold',
+      marginBottom: '10px',
+      color: '#333',
+    },
+    responseDescription: {
+      fontSize: '1rem',
+      color: '#666',
+      marginBottom: '10px',
+      lineHeight: '1.6',
+    },
+    errorResponseHeading: {
+      fontSize: '1.2rem',
+      fontWeight: 'bold',
+      marginBottom: '10px',
+      color: '#cc0000',
+    },
+  };
+
   return (
-    <div className="container">
-      <section className="api-section">
-        <h2 className="api-heading">
-          <span className="api-method post">POST</span> /purchase
-        </h2>
-        <p className="api-description">
-          Handles product purchase, applies discount if provided, deducts balance
-          from the user, and records the transaction.
-        </p>
+    <div style={styles.container}>
+      <h2 style={styles.heading}>Purchase Endpoint</h2>
+      <div style={styles.endpoint}>
+        <span style={styles.methodBadge}>POST</span> <code>/purchase</code>
+      </div>
+      <p style={styles.description}>
+        Handles product purchase, applies discount if provided, deducts balance from the user, and records the transaction.
+      </p>
 
-        <h3 className="section-heading">Request Body</h3>
-        <p>
-          Expects a JSON payload with the following keys:
-        </p>
-        <div className="table-container">
-          <table className="api-table">
-            <thead>
-              <tr>
-                <th>Parameter</th>
-                <th>Type</th>
-                <th>Description</th>
-                <th>Required</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><code>user_id</code></td>
-                <td><code>integer</code></td>
-                <td>The ID of the user making the purchase.</td>
-                <td>Yes</td>
-              </tr>
-              <tr>
-                <td><code>product_id</code></td>
-                <td><code>integer</code></td>
-                <td>The ID of the product to purchase.</td>
-                <td>Yes</td>
-              </tr>
-              <tr>
-                <td><code>quantity</code></td>
-                <td><code>integer</code></td>
-                <td>The quantity of the product to purchase.</td>
-                <td>No (Default: <code>1</code>)</td>
-              </tr>
-              <tr>
-                <td><code>discount_rate</code></td>
-                <td><code>float</code></td>
-                <td>
-                  Optional discount rate to apply to the product price (e.g.,
-                  <code>0.1</code> for 10% discount).
-                </td>
-                <td>No (Default: <code>0</code>)</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <h3 style={styles.responseHeading}>Request Body</h3>
+      <table style={styles.table}>
+        <thead>
+          <tr>
+            <th style={styles.th}>Parameter</th>
+            <th style={styles.th}>Type</th>
+            <th style={styles.th}>Required</th>
+            <th style={styles.th}>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style={styles.td}><code>user_id</code></td>
+            <td style={styles.td}><code>integer</code></td>
+            <td style={styles.td}>Yes</td>
+            <td style={styles.td}>The ID of the user making the purchase.</td>
+          </tr>
+          <tr>
+            <td style={styles.td}><code>product_id</code></td>
+            <td style={styles.td}><code>integer</code></td>
+            <td style={styles.td}>Yes</td>
+            <td style={styles.td}>The ID of the product to be purchased.</td>
+          </tr>
+          <tr>
+            <td style={styles.td}><code>quantity</code></td>
+            <td style={styles.td}><code>integer</code></td>
+            <td style={styles.td}>No</td>
+            <td style={styles.td}>The quantity of the product to purchase. Defaults to <code>1</code>.</td>
+          </tr>
+          <tr>
+            <td style={styles.td}><code>discount_rate</code></td>
+            <td style={styles.td}><code>float</code></td>
+            <td style={styles.td}>No</td>
+            <td style={styles.td}>The discount rate to apply to the product price (e.g., <code>0.1</code> for 10% discount). Defaults to <code>0</code>.</td>
+          </tr>
+        </tbody>
+      </table>
 
-        <h3 className="section-heading">Success Response</h3>
-        <p>
-          <strong>Status Code:</strong> <code>200 OK</code>
-        </p>
-        <p>
-          Returns a JSON response with a success message, transaction details, and
-          the user's new balance.
-        </p>
-        <pre className="code-block">
-          <code className="language-json">
+      <h3 style={styles.responseHeading}>Example Request</h3>
+      <div style={styles.codeBlock}>
+        <pre>
+          <code>
             {`{
+  "user_id": 123,
+  "product_id": 456,
+  "quantity": 2,
+  "discount_rate": 0.05
+}`}
+          </code>
+        </pre>
+      </div>
+
+      <div style={styles.responseSection}>
+        <h3 style={styles.responseHeading}>Success Response (200 OK)</h3>
+        <p style={styles.responseDescription}>
+          Returned upon successful purchase.
+        </p>
+        <div style={styles.codeBlock}>
+          <pre>
+            <code>
+              {`{
   "message": "Purchase successful",
   "transaction": {
-    // ... transaction details ...
+    "transaction_id": "some_uuid",
     "user_id": 123,
     "product_id": 456,
     "quantity": 2,
-    "total_price": 90.00
+    "total_price": 95.00,
+    "timestamp": "2024-01-01T12:00:00Z"
   },
-  "new_balance": 10.00
+  "new_balance": 405.00
 }`}
-          </code>
-        </pre>
+            </code>
+          </pre>
+        </div>
+      </div>
 
-        <h3 className="section-heading">Error Responses</h3>
-        <p>
-          <strong>Status Code:</strong> <code>400 Bad Request</code>
+      <div style={styles.responseSection}>
+        <h3 style={styles.errorResponseHeading}>Error Response (400 Bad Request)</h3>
+        <p style={styles.responseDescription}>
+          Returned if the request payload is invalid JSON, or if user has insufficient balance.
         </p>
-        <p>
-          Returned when the request is invalid, such as missing or incorrect
-          parameters, or insufficient balance.
-        </p>
-        <pre className="code-block">
-          <code className="language-json">
-            {`{
+        <div style={styles.codeBlock}>
+          <pre>
+            <code>
+              {`{
   "error": "Invalid JSON payload"
 }`}
-          </code>
-        </pre>
-        <pre className="code-block">
-          <code className="language-json">
-            {`{
+            </code>
+          </pre>
+        </div>
+        <div style={styles.codeBlock}>
+          <pre>
+            <code>
+              {`{
   "error": "Insufficient balance"
 }`}
-          </code>
-        </pre>
+            </code>
+          </pre>
+        </div>
+      </div>
 
-        <p>
-          <strong>Status Code:</strong> <code>404 Not Found</code>
+      <div style={styles.responseSection}>
+        <h3 style={styles.errorResponseHeading}>Error Response (404 Not Found)</h3>
+        <p style={styles.responseDescription}>
+          Returned if the user or product is not found.
         </p>
-        <p>
-          Returned when the user or product is not found.
-        </p>
-        <pre className="code-block">
-          <code className="language-json">
-            {`{
+        <div style={styles.codeBlock}>
+          <pre>
+            <code>
+              {`{
   "error": "User not found"
 }`}
-          </code>
-        </pre>
-        <pre className="code-block">
-          <code className="language-json">
-            {`{
+            </code>
+          </pre>
+        </div>
+        <div style={styles.codeBlock}>
+          <pre>
+            <code>
+              {`{
   "error": "Product not found"
 }`}
-          </code>
-        </pre>
-      </section>
-      <style jsx>{`
-        .container {
-          font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-          padding: 2rem;
-          color: #24292e;
-        }
-
-        .api-section {
-          max-width: 800px;
-          margin: 0 auto;
-        }
-
-        .api-heading {
-          font-size: 2rem;
-          font-weight: 600;
-          margin-bottom: 1rem;
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-        }
-
-        .api-method {
-          padding: 0.25rem 0.5rem;
-          border-radius: 6px;
-          font-size: 0.875rem;
-          font-weight: 600;
-          color: white;
-        }
-
-        .post {
-          background-color: #198754; /* Bootstrap success color */
-        }
-
-
-        .api-description {
-          color: #586069;
-          line-height: 1.5;
-          margin-bottom: 1.5rem;
-        }
-
-        .section-heading {
-          font-size: 1.5rem;
-          font-weight: 500;
-          margin-top: 2rem;
-          margin-bottom: 1rem;
-        }
-
-        .table-container {
-          overflow-x: auto;
-        }
-
-        .api-table {
-          width: 100%;
-          border-collapse: collapse;
-          margin-bottom: 1.5rem;
-          border-spacing: 0;
-        }
-
-        .api-table thead th {
-          background-color: #f6f8fa;
-          color: #24292e;
-          text-align: left;
-          padding: 0.75rem 1rem;
-          font-weight: 600;
-          border-bottom: 1px solid #d0d7de;
-        }
-
-        .api-table tbody td {
-          padding: 0.75rem 1rem;
-          border-bottom: 1px solid #e1e4e8;
-          vertical-align: top;
-        }
-
-        .api-table tbody tr:last-child td {
-          border-bottom: none;
-        }
-
-
-        .code-block {
-          background-color: #f6f8fa;
-          border-radius: 6px;
-          padding: 1rem;
-          overflow-x: auto;
-          margin-bottom: 1.5rem;
-        }
-
-        .code-block code {
-          font-family: monospace, monospace;
-          font-size: 0.875rem;
-          color: #24292e;
-          display: block; /* Ensure proper wrapping */
-          white-space: pre; /* Keep formatting and spaces */
-          word-wrap: normal; /* Prevent line breaks within words if possible */
-          overflow-x: auto; /* Enable horizontal scrolling if content is wider than container */
-
-        }
-      `}</style>
+            </code>
+          </pre>
+        </div>
+      </div>
     </div>
   );
 };
