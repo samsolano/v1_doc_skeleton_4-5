@@ -1,3 +1,4 @@
+import Users from "./pages/api-docs/Users";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -77,7 +78,8 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
 
           {/* Created Docs */}
-        </Routes>
+             <Route path="/api-docs/users" element={<Users />} />
+</Routes>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

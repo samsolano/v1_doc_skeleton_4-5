@@ -17,7 +17,12 @@ const Sidebar = () => {
         <nav className="mt-4">
           <ul className="space-y-2">
 
-          </ul>
+                      <li>
+              <Link to="/api-docs/users" className="block px-4 py-2 text-codium-foreground hover:bg-codium-border">
+                /Users
+              </Link>
+            </li>
+</ul>
         </nav>
       </div>
     </aside>
