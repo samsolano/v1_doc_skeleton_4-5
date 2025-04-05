@@ -1,4 +1,3 @@
-import Recharge from "./pages/api-docs/Recharge";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -31,8 +30,6 @@ import FeaturesContextAwareness from "./pages/features/ContextAwareness";
 import APIMarketplace from "./pages/APIMarketplace";
 import APIDocumentation from "./pages/APIDocumentation";
 import APIDeepsearch from "./pages/APIDeepsearch";
-
-import Endpoint1 from "./pages/api-docs/Endpoint1";
 
 const queryClient = new QueryClient();
 
