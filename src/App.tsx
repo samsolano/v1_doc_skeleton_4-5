@@ -1,4 +1,3 @@
-import Recharge from "./pages/api-docs/Recharge";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -42,7 +41,6 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout><Index /></Layout>} />
-          <Route path="/api-docs/endpoint1"  />
           <Route path="/documentation" element={<Layout><Documentation /></Layout>} />
           <Route path="/features" element={<Layout><Features /></Layout>} />
           <Route path="/download" element={<Layout><Download /></Layout>} />
