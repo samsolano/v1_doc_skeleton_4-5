@@ -1,3 +1,4 @@
+import Recharge from "./pages/api-docs/Recharge";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -75,7 +76,8 @@ const App = () => (
           <Route path="/features/context-awareness" element={<Layout><FeaturesContextAwareness /></Layout>} />
           
           <Route path="*" element={<NotFound />} />
-        </Routes>
+                  <Route path="/api-docs/recharge" element={<Recharge />} />
+</Routes>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
