@@ -1,135 +1,151 @@
 ```jsx
-import React from 'react';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Code } from "@/components/ui/code";
-import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-
-function RechargeEndpointDoc() {
+const Endpoint1 = () => {
   return (
-    <Card className="w-full">
-      <CardHeader>
-        <CardTitle>
-          Recharge Account
-        </CardTitle>
-        <CardDescription>
+    
+      
+        <p style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>
+          /recharge
+        </p>
+        <p style={{ color: '#718096', marginBottom: '1rem' }}>POST</p>
+      
+
+      
+        <p style={{ marginBottom: '0.75rem' }}>
           Adds the specified amount to the user's balance.
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div className="mb-4">
-          <Badge variant="secondary">POST</Badge> <Code>/recharge</Code>
-        </div>
+        </p>
+      
 
-        <div className="mb-6">
-          <h3 className="text-lg font-semibold mb-2">Request Body</h3>
-          <p className="text-sm text-muted-foreground mb-2">
-            Expects a JSON payload with the following parameters:
-          </p>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Parameter</TableHead>
-                <TableHead>Type</TableHead>
-                <TableHead>Description</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              <TableRow>
-                <TableCell><Code>user_id</Code></TableCell>
-                <TableCell><Code>integer</Code></TableCell>
-                <TableCell>The ID of the user to recharge.</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell><Code>amount</Code></TableCell>
-                <TableCell><Code>float</Code></TableCell>
-                <TableCell>The amount to add to the user's balance.</TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-          <p className="mt-2 text-sm text-muted-foreground">
-            Example JSON Payload:
-          </p>
-          <Code block language="json">
+      
+        <p style={{ fontSize: '1.1rem', fontWeight: 'bold', marginTop: '1.5rem', marginBottom: '0.5rem' }}>
+          Request Body
+        </p>
+        <p style={{ marginBottom: '0.5rem' }}>
+          Expects a JSON payload with the following structure:
+        </p>
+        <pre style={{ backgroundColor: '#f0f0f0', padding: '1rem', borderRadius: '0.375rem', overflowX: 'auto' }}>
+          <code style={{ fontFamily: 'monospace', fontSize: '0.9rem' }}>
             {`{
-  "user_id": 123,
-  "amount": 50.00
+  "user_id": number,
+  "amount": number
 }`}
-          </Code>
-        </div>
+          </code>
+        </pre>
+        
+          
+            <p style={{ fontWeight: 'bold' }}>user_id</p>
+            
+              integer
+            
+          
+          
+            <p>The ID of the user to recharge.</p>
+          
+        
+        
+          
+            <p style={{ fontWeight: 'bold' }}>amount</p>
+            
+              float
+            
+          
+          
+            <p>The amount to add to the user's balance.</p>
+          
+        
+      
 
-        <div className="mb-6">
-          <h3 className="text-lg font-semibold mb-2">Success Response</h3>
-          <Badge variant="outline" className="mb-2">200 OK</Badge>
-          <p className="text-sm text-muted-foreground mb-2">
-            Returns a JSON response upon successful recharge.
+      
+        <p style={{ fontSize: '1.1rem', fontWeight: 'bold', marginTop: '1.5rem', marginBottom: '0.5rem' }}>
+          Response
+        </p>
+
+        
+          <p style={{ fontSize: '1rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>
+            200 OK
           </p>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Field</TableHead>
-                <TableHead>Type</TableHead>
-                <TableHead>Description</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              <TableRow>
-                <TableCell><Code>message</Code></TableCell>
-                <TableCell><Code>string</Code></TableCell>
-                <TableCell>Confirmation message, e.g., "Recharge successful".</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell><Code>new_balance</Code></TableCell>
-                <TableCell><Code>float</Code></TableCell>
-                <TableCell>The user's updated balance after the recharge.</TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-          <p className="mt-2 text-sm text-muted-foreground">
-            Example Success Response:
-          </p>
-          <Code block language="json">
-            {`{
+          <pre style={{ backgroundColor: '#f0f0f0', padding: '1rem', borderRadius: '0.375rem', overflowX: 'auto' }}>
+            <code style={{ fontFamily: 'monospace', fontSize: '0.9rem' }}>
+              {`{
   "message": "Recharge successful",
-  "new_balance": 150.00
+  "new_balance": number
 }`}
-          </Code>
-        </div>
+            </code>
+          </pre>
+          
+            
+              <p style={{ fontWeight: 'bold' }}>message</p>
+              
+                string
+              
+            
+            
+              <p>Confirmation message indicating successful recharge.</p>
+            
+          
+          
+            
+              <p style={{ fontWeight: 'bold' }}>new_balance</p>
+              
+                number
+              
+            
+            
+              <p>The user's updated balance after the recharge.</p>
+            
+          
+        
 
-        <div>
-          <h3 className="text-lg font-semibold mb-2">Error Responses</h3>
-          <p className="text-sm text-muted-foreground mb-2">
-            The API may return the following error responses:
+        
+          <p style={{ fontSize: '1rem', fontWeight: 'bold', marginTop: '1rem', marginBottom: '0.5rem' }}>
+            400 Bad Request
           </p>
-          <div className="space-y-4">
-            <div>
-              <Badge variant="destructive" className="mr-2">400 Bad Request</Badge>
-              <p className="text-sm text-muted-foreground">
-                Returned if the request body is not valid JSON.
-              </p>
-              <Code block language="json" className="mt-2">
-                {`{
+          <pre style={{ backgroundColor: '#f0f0f0', padding: '1rem', borderRadius: '0.375rem', overflowX: 'auto' }}>
+            <code style={{ fontFamily: 'monospace', fontSize: '0.9rem' }}>
+              {`{
   "error": "Invalid JSON payload"
 }`}
-              </Code>
-            </div>
-            <div>
-              <Badge variant="destructive" className="mr-2">404 Not Found</Badge>
-              <p className="text-sm text-muted-foreground">
-                Returned if the <Code>user_id</Code> provided does not correspond to an existing user.
-              </p>
-              <Code block language="json" className="mt-2">
-                {`{
+            </code>
+          </pre>
+          
+            
+              <p style={{ fontWeight: 'bold' }}>error</p>
+              
+                string
+              
+            
+            
+              <p>Error message indicating the request body was not valid JSON.</p>
+            
+          
+        
+
+        
+          <p style={{ fontSize: '1rem', fontWeight: 'bold', marginTop: '1rem', marginBottom: '0.5rem' }}>
+            404 Not Found
+          </p>
+          <pre style={{ backgroundColor: '#f0f0f0', padding: '1rem', borderRadius: '0.375rem', overflowX: 'auto' }}>
+            <code style={{ fontFamily: 'monospace', fontSize: '0.9rem' }}>
+              {`{
   "error": "User not found"
 }`}
-              </Code>
-            </div>
-          </div>
-        </div>
-      </CardContent>
-    </Card>
+            </code>
+          </pre>
+          
+            
+              <p style={{ fontWeight: 'bold' }}>error</p>
+              
+                string
+              
+            
+            
+              <p>Error message indicating that the specified user ID was not found.</p>
+            
+          
+        
+      
+    
   );
-}
+};
 
-export default RechargeEndpointDoc;
+export default Endpoint1;
 ```
