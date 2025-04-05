@@ -57,6 +57,11 @@ const Sidebar = () => {
                 /Users
               </Link>
             </li>
+            <li>
+              <Link to="/api-docs/products" className="block px-4 py-2 text-codium-foreground hover:bg-codium-border">
+                /Products
+              </Link>
+            </li>
 </ul>
         </nav>
       </div>
