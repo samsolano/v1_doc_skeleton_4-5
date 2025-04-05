@@ -3,94 +3,85 @@ import React from 'react';
 
 const Recharge = () => {
   return (
-    <div className="font-sans text-gray-900">
-      <h2 className="scroll-m-20 pb-2 text-3xl font-bold tracking-tight transition-colors first:mt-0">
-        Recharge Account
-      </h2>
-      <div className="mb-4">
-        <div className="inline-flex items-center rounded-md bg-green-500 px-2.5 py-0.5 text-sm font-semibold text-white mr-2">
-          POST
-        </div>
-        <div className="inline-flex items-center rounded-md bg-gray-100 px-2.5 py-0.5 text-sm font-mono text-gray-600">
-          /recharge
-        </div>
+    <div className="api-documentation" style={{ fontFamily: 'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"', lineHeight: '1.5', color: '#111827' }}>
+      <h2 style={{ fontWeight: 'bold', fontSize: '2rem', marginBottom: '1rem' }}>Recharge Account</h2>
+      <div className="endpoint-info" style={{ marginBottom: '1.5rem' }}>
+        <div className="method" style={{ display: 'inline-block', padding: '0.25rem 0.5rem', backgroundColor: '#10B981', color: 'white', borderRadius: '0.25rem', fontWeight: 'bold', marginRight: '0.5rem', fontSize: '0.875rem' }}>POST</div>
+        <div className="path" style={{ display: 'inline-block', padding: '0.25rem 0.5rem', backgroundColor: '#F3F4F6', color: '#4B5563', borderRadius: '0.25rem', fontSize: '0.875rem', fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace' }}>/recharge</div>
       </div>
-      <div className="mb-6 text-gray-600">
-        <p>Adds the specified amount to the user's balance.</p>
+      <div className="description" style={{ marginBottom: '1rem' }}>
+        <p style={{ color: '#4B5563' }}>Adds the specified amount to the user's balance.</p>
       </div>
 
-      <div className="mb-8">
-        <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">Request Body</h3>
-        <p className="mb-4 text-gray-600">Expects a JSON payload with the following fields:</p>
-        <ul className="list-disc pl-6 text-gray-600">
-          <li className="mb-2">
-            <code className="font-mono rounded-md bg-gray-100 px-2 py-1 text-sm font-semibold">user_id</code>{' '}
-            <span className="text-gray-500">(integer, required)</span> - The ID of the user to recharge.
+      <div className="request-body" style={{ marginBottom: '1.5rem' }}>
+        <h3 style={{ fontWeight: 'bold', fontSize: '1.25rem', marginBottom: '0.75rem' }}>Request Body</h3>
+        <p style={{ color: '#4B5563', marginBottom: '0.5rem' }}>Expects a JSON payload with the following fields:</p>
+        <ul style={{ listStyleType: 'disc', paddingLeft: '1.5rem', color: '#4B5563' }}>
+          <li style={{ marginBottom: '0.25rem' }}>
+            <code style={{ padding: '0.2rem 0.4rem', backgroundColor: '#F3F4F6', borderRadius: '0.25rem', fontSize: '0.875rem', fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace' }}>user_id</code> <span style={{ color: '#6B7280' }}> (integer, required)</span> - The ID of the user to recharge.
           </li>
           <li>
-            <code className="font-mono rounded-md bg-gray-100 px-2 py-1 text-sm font-semibold">amount</code>{' '}
-            <span className="text-gray-500">(number, optional, default: 0)</span> - The amount to add to the user's balance.
+            <code style={{ padding: '0.2rem 0.4rem', backgroundColor: '#F3F4F6', borderRadius: '0.25rem', fontSize: '0.875rem', fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace' }}>amount</code> <span style={{ color: '#6B7280' }}> (number, optional, default: 0)</span> - The amount to add to the user's balance.
           </li>
         </ul>
-        <div className="mt-4">
-          <p className="mb-2 font-semibold text-gray-600">Example Request:</p>
-          <pre className="rounded-md bg-gray-100 p-4 font-mono text-sm text-gray-800 overflow-x-auto">
-            <code>{`{
+        <div className="example-request" style={{ marginTop: '0.75rem' }}>
+          <p style={{ fontWeight: 'bold', color: '#4B5563', marginBottom: '0.25rem' }}>Example Request:</p>
+          <pre style={{ backgroundColor: '#F3F4F6', padding: '0.75rem', borderRadius: '0.5rem', overflowX: 'auto' }}>
+            <code style={{ fontSize: '0.875rem', fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace', display: 'block', whiteSpace: 'pre' }}>
+              {`{
   "user_id": 123,
   "amount": 50.00
-}`}</code>
+}`}
+            </code>
           </pre>
         </div>
       </div>
 
-      <div className="mb-8">
-        <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">Responses</h3>
+      <div className="responses" style={{ marginBottom: '1.5rem' }}>
+        <h3 style={{ fontWeight: 'bold', fontSize: '1.25rem', marginBottom: '0.75rem' }}>Responses</h3>
 
-        <div className="mb-6">
-          <h4 className="mb-2 text-lg font-semibold">
-            <div className="inline-flex items-center rounded-md bg-green-500 px-2.5 py-0.5 text-xs font-semibold text-white mr-2">
-              200 OK
-            </div>
-            Success
+        <div className="success-response" style={{ marginBottom: '1rem' }}>
+          <h4 style={{ fontWeight: 'bold', fontSize: '1rem', marginBottom: '0.5rem' }}>
+            <span style={{ display: 'inline-block', padding: '0.25rem 0.5rem', backgroundColor: '#10B981', color: 'white', borderRadius: '0.25rem', fontWeight: 'bold', marginRight: '0.5rem', fontSize: '0.875rem' }}>200 OK</span> Success
           </h4>
-          <p className="mb-2 text-gray-600">Successful recharge.</p>
-          <p className="mb-2 text-gray-600">Response body:</p>
-          <pre className="rounded-md bg-gray-100 p-4 font-mono text-sm text-gray-800 overflow-x-auto">
-            <code>{`{
+          <p style={{ color: '#4B5563', marginBottom: '0.5rem' }}>Successful recharge.</p>
+          <p style={{ color: '#4B5563', marginBottom: '0.5rem' }}>Response body:</p>
+          <pre style={{ backgroundColor: '#F3F4F6', padding: '0.75rem', borderRadius: '0.5rem', overflowX: 'auto' }}>
+            <code style={{ fontSize: '0.875rem', fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace', display: 'block', whiteSpace: 'pre' }}>
+              {`{
   "message": "Recharge successful",
   "new_balance": 150.00
-}`}</code>
+}`}
+            </code>
           </pre>
         </div>
 
-        <div>
-          <h4 className="mb-4 text-lg font-semibold">Error Responses</h4>
+        <div className="error-responses">
+          <h4 style={{ fontWeight: 'bold', fontSize: '1rem', marginBottom: '0.5rem' }}>Error Responses</h4>
 
-          <div className="mb-4">
-            <h5 className="mb-1 text-base font-semibold">
-              <div className="inline-flex items-center rounded-md bg-red-500 px-2.5 py-0.5 text-xs font-semibold text-white mr-2">
-                400 Bad Request
-              </div>
-              Invalid JSON Payload
+          <div className="bad-request-response" style={{ marginBottom: '0.75rem' }}>
+            <h5 style={{ fontWeight: 'bold', fontSize: '0.875rem', marginBottom: '0.25rem' }}>
+              <span style={{ display: 'inline-block', padding: '0.25rem 0.5rem', backgroundColor: '#EF4444', color: 'white', borderRadius: '0.25rem', fontWeight: 'bold', marginRight: '0.5rem', fontSize: '0.75rem' }}>400 Bad Request</span> Invalid JSON Payload
             </h5>
-            <pre className="rounded-md bg-gray-100 p-2 font-mono text-sm text-gray-800 overflow-x-auto">
-              <code>{`{
+            <pre style={{ backgroundColor: '#F3F4F6', padding: '0.5rem', borderRadius: '0.5rem', overflowX: 'auto' }}>
+              <code style={{ fontSize: '0.875rem', fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace', display: 'block', whiteSpace: 'pre' }}>
+                {`{
   "error": "Invalid JSON payload"
-}`}</code>
+}`}
+              </code>
             </pre>
           </div>
 
-          <div>
-            <h5 className="mb-1 text-base font-semibold">
-              <div className="inline-flex items-center rounded-md bg-red-500 px-2.5 py-0.5 text-xs font-semibold text-white mr-2">
-                404 Not Found
-              </div>
-              User Not Found
+          <div className="not-found-response">
+            <h5 style={{ fontWeight: 'bold', fontSize: '0.875rem', marginBottom: '0.25rem' }}>
+              <span style={{ display: 'inline-block', padding: '0.25rem 0.5rem', backgroundColor: '#EF4444', color: 'white', borderRadius: '0.25rem', fontWeight: 'bold', marginRight: '0.5rem', fontSize: '0.75rem' }}>404 Not Found</span> User Not Found
             </h5>
-            <pre className="rounded-md bg-gray-100 p-2 font-mono text-sm text-gray-800 overflow-x-auto">
-              <code>{`{
+            <pre style={{ backgroundColor: '#F3F4F6', padding: '0.5rem', borderRadius: '0.5rem', overflowX: 'auto' }}>
+              <code style={{ fontSize: '0.875rem', fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace', display: 'block', whiteSpace: 'pre' }}>
+                {`{
   "error": "User not found"
-}`}</code>
+}`}
+              </code>
             </pre>
           </div>
         </div>
