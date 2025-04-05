@@ -16,73 +16,7 @@ const Sidebar = () => {
       <div className="flex flex-col h-full">
         <nav className="mt-4">
           <ul className="space-y-2">
-
-                      <li>
-              <Link to="/api-docs/users" className="block px-4 py-2 text-codium-foreground hover:bg-codium-border">
-                /Users
-              </Link>
-            </li>
-            <li>
-              <Link to="/api-docs/users" className="block px-4 py-2 text-codium-foreground hover:bg-codium-border">
-                /Users
-              </Link>
-            </li>
-            <li>
-              <Link to="/api-docs/products" className="block px-4 py-2 text-codium-foreground hover:bg-codium-border">
-                /Products
-              </Link>
-            </li>
-            <li>
-              <Link to="/api-docs/transactions" className="block px-4 py-2 text-codium-foreground hover:bg-codium-border">
-                /Transactions
-              </Link>
-            </li>
-            <li>
-              <Link to="/api-docs/purchase" className="block px-4 py-2 text-codium-foreground hover:bg-codium-border">
-                /Purchase
-              </Link>
-            </li>
-            <li>
-              <Link to="/api-docs/recharge" className="block px-4 py-2 text-codium-foreground hover:bg-codium-border">
-                /Recharge
-              </Link>
-            </li>
-            <li>
-              <Link to="/api-docs/summary" className="block px-4 py-2 text-codium-foreground hover:bg-codium-border">
-                /Summary
-              </Link>
-            </li>
-            <li>
-              <Link to="/api-docs/users" className="block px-4 py-2 text-codium-foreground hover:bg-codium-border">
-                /Users
-              </Link>
-            </li>
-            <li>
-              <Link to="/api-docs/products" className="block px-4 py-2 text-codium-foreground hover:bg-codium-border">
-                /Products
-              </Link>
-            </li>
-            <li>
-              <Link to="/api-docs/transactions" className="block px-4 py-2 text-codium-foreground hover:bg-codium-border">
-                /Transactions
-              </Link>
-            </li>
-            <li>
-              <Link to="/api-docs/purchase" className="block px-4 py-2 text-codium-foreground hover:bg-codium-border">
-                /Purchase
-              </Link>
-            </li>
-            <li>
-              <Link to="/api-docs/recharge" className="block px-4 py-2 text-codium-foreground hover:bg-codium-border">
-                /Recharge
-              </Link>
-            </li>
-            <li>
-              <Link to="/api-docs/summary" className="block px-4 py-2 text-codium-foreground hover:bg-codium-border">
-                /Summary
-              </Link>
-            </li>
-</ul>
+          </ul>
         </nav>
       </div>
     </aside>

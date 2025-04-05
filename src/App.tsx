@@ -1,9 +1,3 @@
-import Summary from "./pages/api-docs/Summary";
-import Recharge from "./pages/api-docs/Recharge";
-import Purchase from "./pages/api-docs/Purchase";
-import Transactions from "./pages/api-docs/Transactions";
-import Products from "./pages/api-docs/Products";
-import Users from "./pages/api-docs/Users";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -83,13 +77,7 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
 
           {/* Created Docs */}
-             <Route path="/api-docs/users" element={<Users />} />
-     <Route path="/api-docs/products" element={<Products />} />
-     <Route path="/api-docs/transactions" element={<Transactions />} />
-     <Route path="/api-docs/purchase" element={<Purchase />} />
-     <Route path="/api-docs/recharge" element={<Recharge />} />
-     <Route path="/api-docs/summary" element={<Summary />} />
-</Routes>
+        </Routes>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
