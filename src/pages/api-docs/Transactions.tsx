@@ -1,182 +1,138 @@
 ```jsx
 import React from 'react';
 
+const Card = ({ className, children, ...props }) => {
+  return (
+    <div className={`rounded-lg border bg-card text-card-foreground shadow-sm ${className}`} {...props}>
+      {children}
+    </div>
+  );
+};
+
+const CardHeader = ({ className, children, ...props }) => {
+  return <div className={`flex flex-col space-y-1.5 p-6 ${className}`} {...props}>{children}</div>;
+};
+
+const CardTitle = ({ className, children, ...props }) => {
+  return <h4 className={`text-2xl font-semibold leading-none tracking-tight ${className}`} {...props}>{children}</h4>;
+};
+
+const CardDescription = ({ className, children, ...props }) => {
+  return <p className={`text-sm text-muted-foreground ${className}`} {...props}>{children}</p>;
+};
+
+const Code = ({ className, children, ...props }) => {
+  return (
+    <pre className={`relative rounded bg-muted px-3 py-2 font-mono text-sm shadow-sm ${className}`} {...props}>
+      <code className="text-sm">{children}</code>
+    </pre>
+  );
+};
+
+const Badge = ({ className, variant = "default", ...props }) => {
+  const baseStyles = "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2";
+  const variantStyles = {
+    default: "border-transparent bg-primary text-primary-foreground hover:bg-primary/80",
+    secondary: "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
+    destructive: "border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80",
+    outline: "border-border bg-background",
+  };
+  return (
+    <div className={`${baseStyles} ${variantStyles[variant]} ${className}`} {...props}>
+      {children}
+    </div>
+  );
+};
+
+const Table = ({ className, children, ...props }) => {
+  return <div className="relative w-full overflow-auto"><table className={`w-full caption-bottom text-sm ${className}`} {...props}>{children}</table></div>;
+};
+
+const TableHeader = ({ className, children, ...props }) => {
+  return <thead className={`[&_tr]:border-b ${className}`} {...props}>{children}</thead>;
+};
+
+const TableBody = ({ className, children, ...props }) => {
+  return <tbody className={`[&_tr:last-child]:border-0 ${className}`} {...props}>{children}</tbody>;
+};
+
+const TableRow = ({ className, children, ...props }) => {
+  return <tr className={`border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted ${className}`} {...props}>{children}</tr>;
+};
+
+const TableHead = ({ className, children, ...props }) => {
+  return <th className={`h-12 px-4 text-left align-middle font-medium text-muted-foreground [&:not([align=left])]:text-right ${className}`} {...props}>{children}</th>;
+};
+
+const TableCell = ({ className, children, ...props }) => {
+  return <td className={`p-4 align-middle [&:not([align=left])]:text-right ${className}`} {...props}>{children}</td>;
+};
+
+
 const Transactions = () => {
   return (
-    <div className="container mx-auto mt-10 p-4">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold tracking-tight">Transactions</h1>
-        <p className="text-muted-foreground mt-2">
-          Retrieves a list of transactions, with optional filtering by user ID.
-        </p>
-      </div>
-
-      <div className="mb-4">
-        <h2 className="text-2xl font-bold tracking-tight mb-2">Endpoint</h2>
-        <div className="rounded-md border bg-card text-card-foreground shadow-sm">
-          <div className="p-4">
-            <div className="font-mono text-sm">
-              <p className="mb-1">
-                <span className="font-semibold">Method:</span> GET
-              </p>
-              <p>
-                <span className="font-semibold">Path:</span> <code className="bg-muted px-1 py-0.5 rounded font-mono text-sm">/transactions</code>
-              </p>
-            </div>
-          </div>
+    <Card>
+      <CardHeader>
+        <CardTitle>GET /transactions</CardTitle>
+        <CardDescription>Retrieves a list of transactions, optionally filtered by user ID.</CardDescription>
+      </CardHeader>
+      <div className="p-6">
+        <div className="mb-4">
+          <h3 className="text-lg font-semibold">Endpoint</h3>
+          <Code className="block mt-2">/transactions</Code>
         </div>
-      </div>
-
-      <div className="mb-4">
-        <h2 className="text-2xl font-bold tracking-tight mb-2">Description</h2>
-        <div className="rounded-md border bg-card text-card-foreground shadow-sm">
-          <div className="p-4">
-            <p className="text-sm">
-              This endpoint fetches a list of transactions. It supports optional filtering to retrieve transactions associated with a specific user.
-            </p>
-          </div>
+        <div className="mb-4">
+          <h3 className="text-lg font-semibold">Method</h3>
+          <Badge variant="default">GET</Badge>
         </div>
-      </div>
-
-      <div className="mb-4">
-        <h2 className="text-2xl font-bold tracking-tight mb-2">Query Parameters</h2>
-        <div className="rounded-md border bg-card text-card-foreground shadow-sm">
-          <div className="p-4">
-            <div className="grid gap-4">
-              <div className="space-y-2">
-                <h3 className="text-lg font-semibold">user_id <span className="text-muted-foreground text-sm">(optional)</span></h3>
-                <p className="text-sm text-muted-foreground">
-                  Filters the transactions to only include those associated with the provided user ID.
-                </p>
-                <div className="font-mono text-sm">
-                  <p><span className="font-semibold">Type:</span> integer</p>
-                  <p><span className="font-semibold">Example:</span> <code className="bg-muted px-1 py-0.5 rounded font-mono text-sm">/transactions?user_id=123</code></p>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className="mb-4">
+          <h3 className="text-lg font-semibold">Query Parameters</h3>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Parameter</TableHead>
+                <TableHead>Type</TableHead>
+                <TableHead>Description</TableHead>
+                <TableHead>Required</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell><Code className="inline-block">user_id</Code></TableCell>
+                <TableCell>integer</TableCell>
+                <TableCell>Filters transactions by user ID.</TableCell>
+                <TableCell>Optional</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
         </div>
-      </div>
-
-      <div className="mb-4">
-        <h2 className="text-2xl font-bold tracking-tight mb-2">Response</h2>
-        <div className="rounded-md border bg-card text-card-foreground shadow-sm">
-          <div className="p-4 space-y-4">
-            <div>
-              <h3 className="text-lg font-semibold">Status Code</h3>
-              <p className="text-sm">
-                <code className="bg-green-100 text-green-800 px-2 py-1 rounded font-mono text-sm">200 OK</code>
-              </p>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold">Response Body</h3>
-              <p className="text-sm">
-                The response body is a JSON object containing a list of transactions.
-              </p>
-              <pre className="mt-2 rounded-md border bg-muted text-sm font-mono p-4">
-                <code className="block">
-                  {`{
+        <div>
+          <h3 className="text-lg font-semibold">Response</h3>
+          <p className="mb-2 text-muted-foreground">Returns a JSON object containing a list of transactions.</p>
+          <Code className="block">
+            {`{
   "transactions": [
     {
       "id": 1,
-      "user_id": 123,
-      "amount": 100.00,
-      "timestamp": "2024-01-01T12:00:00Z",
+      "user_id": 101,
+      "amount": 50.00,
+      "date": "2024-07-28T10:00:00Z",
       // ... other transaction details
     },
     {
       "id": 2,
-      "user_id": 456,
-      "amount": 50.00,
-      "timestamp": "2024-01-02T14:30:00Z",
+      "user_id": 102,
+      "amount": 25.50,
+      "date": "2024-07-27T15:30:00Z",
       // ... other transaction details
     },
     // ... more transactions
   ]
 }`}
-                </code>
-              </pre>
-              <p className="text-sm text-muted-foreground">
-                The structure of each transaction object will depend on your application's data model.
-              </p>
-            </div>
-          </div>
+          </Code>
         </div>
       </div>
-
-      <div className="mb-4">
-        <h2 className="text-2xl font-bold tracking-tight mb-2">Example Request</h2>
-        <div className="rounded-md border bg-card text-card-foreground shadow-sm">
-          <div className="p-4 space-y-4">
-            <div>
-              <h3 className="text-lg font-semibold">Get all transactions</h3>
-              <p className="text-sm">
-                To retrieve all transactions without filtering, send a GET request to the base endpoint.
-              </p>
-              <pre className="mt-2 rounded-md border bg-muted text-sm font-mono p-4">
-                <code className="block">
-                  {`GET /transactions
-Headers:
-  // No specific headers required`}
-                </code>
-              </pre>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold">Get transactions for a specific user</h3>
-              <p className="text-sm">
-                To retrieve transactions for a user with ID 123, include the <code className="font-mono text-sm">user_id</code> query parameter.
-              </p>
-              <pre className="mt-2 rounded-md border bg-muted text-sm font-mono p-4">
-                <code className="block">
-                  {`GET /transactions?user_id=123
-Headers:
-  // No specific headers required`}
-                </code>
-              </pre>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-      <div className="mb-4">
-        <h2 className="text-2xl font-bold tracking-tight mb-2">Example Response</h2>
-        <div className="rounded-md border bg-card text-card-foreground shadow-sm">
-          <div className="p-4 space-y-4">
-            <div>
-              <h3 className="text-lg font-semibold">Successful Response (200 OK)</h3>
-              <p className="text-sm">
-                Example response when transactions are successfully retrieved.
-              </p>
-              <pre className="mt-2 rounded-md border bg-muted text-sm font-mono p-4">
-                <code className="block">
-                  {`{
-  "transactions": [
-    {
-      "id": 1,
-      "user_id": 123,
-      "amount": 100.00,
-      "timestamp": "2024-01-01T12:00:00Z"
-    },
-    {
-      "id": 2,
-      "user_id": 123,
-      "amount": 50.00,
-      "timestamp": "2024-01-02T14:30:00Z"
-    }
-    // ... potentially more transactions, filtered by user_id if provided
-  ]
-}`}
-                </code>
-              </pre>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-    </div>
+    </Card>
   );
 };
 
