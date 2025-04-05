@@ -31,6 +31,11 @@ const Sidebar = () => {
                 /Transactions
               </Link>
             </li>
+            <li>
+              <Link to="/api-docs/purchase" className="block px-4 py-2 text-codium-foreground hover:bg-codium-border">
+                /Purchase
+              </Link>
+            </li>
 </ul>
         </nav>
       </div>
