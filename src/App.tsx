@@ -1,3 +1,4 @@
+import Transactions from "./pages/api-docs/Transactions";
 import Products from "./pages/api-docs/Products";
 import Users from "./pages/api-docs/Users";
 import { Toaster } from "@/components/ui/toaster";
@@ -81,6 +82,7 @@ const App = () => (
           {/* Created Docs */}
              <Route path="/api-docs/users" element={<Users />} />
      <Route path="/api-docs/products" element={<Products />} />
+     <Route path="/api-docs/transactions" element={<Transactions />} />
 </Routes>
       </BrowserRouter>
     </TooltipProvider>
