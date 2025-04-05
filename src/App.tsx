@@ -76,6 +76,8 @@ const App = () => (
           <Route path="/features/context-awareness" element={<Layout><FeaturesContextAwareness /></Layout>} />
           
           <Route path="*" element={<NotFound />} />
+
+          {/* Created Docs */}
                   <Route path="/api-docs/recharge" element={<Recharge />} />
 </Routes>
       </BrowserRouter>
